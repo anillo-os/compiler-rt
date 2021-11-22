@@ -76,7 +76,7 @@
 
 // Mac OSX has __BIG_ENDIAN__ or __LITTLE_ENDIAN__ automatically set by the
 // compiler (at least with GCC)
-#if defined(__APPLE__) || defined(__ellcc__)
+#if defined(__APPLE__) || defined(__ANILLO__) || defined(__ellcc__)
 
 #ifdef __BIG_ENDIAN__
 #if __BIG_ENDIAN__
