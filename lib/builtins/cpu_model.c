@@ -27,7 +27,11 @@
      defined(_M_X64)) &&                                                       \
     (defined(__GNUC__) || defined(__clang__) || defined(_MSC_VER))
 
+#ifndef __ANILLO__
 #include <assert.h>
+#else
+#define assert(x)
+#endif
 
 #define bool int
 #define true 1

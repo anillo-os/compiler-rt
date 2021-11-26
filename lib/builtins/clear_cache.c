@@ -7,7 +7,11 @@
 //===----------------------------------------------------------------------===//
 
 #include "int_lib.h"
+#ifndef __ANILLO__
 #include <assert.h>
+#else
+#define assert(x)
+#endif
 #include <stddef.h>
 
 #if __APPLE__
