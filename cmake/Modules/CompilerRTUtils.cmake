@@ -221,7 +221,7 @@ macro(load_llvm_config)
   endif()
   if (LLVM_CONFIG_PATH)
     execute_process(
-      COMMAND ${LLVM_CONFIG_PATH} "--obj-root" "--bindir" "--libdir" "--src-root" "--includedir"
+      COMMAND ${LLVM_CONFIG_PATH} "--obj-root" "--bindir" "--libdir" "--includedir"
       RESULT_VARIABLE HAD_ERROR
       OUTPUT_VARIABLE CONFIG_OUTPUT)
     if (HAD_ERROR)
@@ -231,12 +231,13 @@ macro(load_llvm_config)
     list(GET CONFIG_OUTPUT 0 BINARY_DIR)
     list(GET CONFIG_OUTPUT 1 TOOLS_BINARY_DIR)
     list(GET CONFIG_OUTPUT 2 LIBRARY_DIR)
-    list(GET CONFIG_OUTPUT 3 MAIN_SRC_DIR)
-    list(GET CONFIG_OUTPUT 4 INCLUDE_DIR)
+    #list(GET CONFIG_OUTPUT 3 MAIN_SRC_DIR)
+    list(GET CONFIG_OUTPUT 3 INCLUDE_DIR)
 
     set(LLVM_BINARY_DIR ${BINARY_DIR} CACHE PATH "Path to LLVM build tree")
     set(LLVM_LIBRARY_DIR ${LIBRARY_DIR} CACHE PATH "Path to llvm/lib")
-    set(LLVM_MAIN_SRC_DIR ${MAIN_SRC_DIR} CACHE PATH "Path to LLVM source tree")
+    #set(LLVM_MAIN_SRC_DIR ${MAIN_SRC_DIR} CACHE PATH "Path to LLVM source tree")
+    set(LLVM_MAIN_SRC_DIR "/this_does_not_exist" CACHE PATH "Path to LLVM source tree")
     set(LLVM_TOOLS_BINARY_DIR ${TOOLS_BINARY_DIR} CACHE PATH "Path to llvm/bin")
     set(LLVM_INCLUDE_DIR ${INCLUDE_DIR} CACHE PATH "Paths to LLVM headers")
 
