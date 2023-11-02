@@ -52,7 +52,7 @@
     defined(_AIX)
 #define COMPILER_RT_ALIAS(name, aliasname) \
   COMPILER_RT_ABI __typeof(name) aliasname __attribute__((__alias__(#name)));
-#elif defined(__APPLE__) || defined(__ANILLO__)
+#elif defined(__APPLE__) || (defined(__ANILLO__) && !defined(__ELF__))
 #if defined(VISIBILITY_HIDDEN)
 #define COMPILER_RT_ALIAS_VISIBILITY(name) \
   __asm__(".private_extern " SYMBOL_NAME(name));

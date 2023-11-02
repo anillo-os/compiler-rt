@@ -14,13 +14,13 @@
 #ifndef COMPILERRT_ASSEMBLY_H
 #define COMPILERRT_ASSEMBLY_H
 
-#if (defined(__APPLE__) || defined(__ANILLO__)) && defined(__aarch64__)
+#if (defined(__APPLE__) || (defined(__ANILLO__) && !defined(__ELF__))) && defined(__aarch64__)
 #define SEPARATOR %%
 #else
 #define SEPARATOR ;
 #endif
 
-#if defined(__APPLE__) || defined(__ANILLO__)
+#if defined(__APPLE__) || (defined(__ANILLO__) && !defined(__ELF__))
 #define HIDDEN(name) .private_extern name
 #define LOCAL_LABEL(name) L_##name
 // tell linker it can break up file at label boundaries
