@@ -765,6 +765,9 @@ int CONSTRUCTOR_ATTRIBUTE __cpu_indicator_init(void) {
   return 0;
 }
 #elif defined(__aarch64__)
+#ifdef __ANILLO__
+_Bool __aarch64_have_lse_atomics __attribute__((visibility("hidden"), nocommon)) = 0;
+#else
 // LSE support detection for out-of-line atomics
 // using HWCAP and Auxiliary vector
 _Bool __aarch64_have_lse_atomics
@@ -784,4 +787,5 @@ static void CONSTRUCTOR_ATTRIBUTE init_have_lse_atomics(void) {
 }
 #endif // defined(__has_include)
 #endif // __has_include(<sys/auxv.h>)
+#endif // defined(__ANILLO__)
 #endif // defined(__aarch64__)
